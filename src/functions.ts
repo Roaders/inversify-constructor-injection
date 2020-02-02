@@ -1,6 +1,6 @@
 import {
-    injectConstructor,
-    injectFunction,
+    injectConstructor as baseInjectConstructor,
+    injectFunction as baseInjectFunction,
     MapMeta,
     ParameterProvider,
 } from 'constructor-injection';
@@ -10,13 +10,13 @@ export const resolveParameter: ParameterProvider = (passedParameter: any, reflec
     return passedParameter != null ? passedParameter : resolveContainer().get(reflectMetadata);
 };
 
-export function injectConstructorParameters<T extends new (...args: any[]) => any>(type: T) {
-    return injectConstructor(type, resolveParameter);
+export function injectConstructor<T extends new (...args: any[]) => any>(type: T) {
+    return baseInjectConstructor(type, resolveParameter);
 }
 
-export function injectFunctionParameters<T extends (...args: any[]) => any>(
+export function injectFunction<T extends (...args: any[]) => any>(
     func: T,
     paramMetadata: MapMeta<Parameters<T>>,
     ) {
-    return injectFunction(func, paramMetadata, resolveParameter);
+    return baseInjectFunction(func, paramMetadata, resolveParameter);
 }
