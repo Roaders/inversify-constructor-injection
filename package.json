@@ -1,0 +1,52 @@
+{
+    "name": "inversify-constructor-injection",
+    "version": "1.0.0",
+    "description": "Helper function to automatically inject dependencies into functions and classes with inversify",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "scripts": {
+        "clean": "rimraf dist",
+        "test": "karma start --singleRun --browsers ChromeHeadlessNoSandbox",
+        "watch-test": "karma start",
+        "build": "tsc",
+        "lint": "tslint -p tsconfig.json",
+        "watch-build": "tsc --watch",
+        "build-release": "concurrently --kill-others-on-fail npm:test npm:build npm:lint",
+        "prepublishOnly": "npm install && npm run clean && npm run build-release && npm version patch"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Roaders/inversify-constructor-injection.git"
+    },
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/Roaders/inversify-constructor-injection/issues"
+    },
+    "homepage": "https://github.com/Roaders/inversify-constructor-injection#readme",
+    "dependencies": {
+        "constructor-injection": "^1.3.1"
+    },
+    "peerDependencies": {
+        "inversify": "^5.0.0"
+    },
+    "devDependencies": {
+        "@types/jasmine": "^3.5.0",
+        "@types/node": "^13.1.4",
+        "concurrently": "^5.1.0",
+        "inversify": "^5.0.1",
+        "jasmine": "^3.5.0",
+        "jasmine-core": "^3.5.0",
+        "karma": "^4.4.1",
+        "karma-chrome-launcher": "^3.1.0",
+        "karma-jasmine": "^2.0.1",
+        "karma-jasmine-html-reporter": "^1.5.1",
+        "karma-sourcemap-loader": "^0.3.7",
+        "karma-webpack": "^4.0.2",
+        "rimraf": "^3.0.0",
+        "ts-loader": "^6.2.1",
+        "ts-toolbelt": "^4.14.6",
+        "tslint": "^5.20.1",
+        "typescript": "^3.5.3",
+        "webpack": "^4.41.5"
+    }
+}
